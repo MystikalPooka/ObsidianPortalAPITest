@@ -6,23 +6,28 @@ using System.Threading.Tasks;
 using ObsidianAPITEST.Entities;
 using Newtonsoft.Json;
 using System.Net.Http;
+using ObsidianAPITEST.OAuth;
+using DevDefined.OAuth.Consumer;
 
 namespace ObsidianAPITEST.Services
 {
     internal class UserService
     {
+        //ObsidianConsumer SessionConsumer = new ObsidianConsumer();
+
         public string _userBaseApiUrl = "http://api.obsidianportal.com/v1/users/";
 
         public async Task<User> GetLoggedInUser()
         {
             using (var httpClient = new HttpClient())
             {
-                var result = await httpClient.GetStringAsync($"{_userBaseApiUrl}me.json");
+                string responseText = ObsidianConsumer.session.Request().Get().ForUrl($"{_userBaseApiUrl}me.json").ToString();
+                //var result = await httpClient.GetStringAsync($"{_userBaseApiUrl}me.json");
 
-                if (string.IsNullOrWhiteSpace(result))
+                if (string.IsNullOrWhiteSpace(responseText))
                     return null;
 
-                return JsonConvert.DeserializeObject<User>(result);
+                return JsonConvert.DeserializeObject<User>(responseText);
             }
         }
 

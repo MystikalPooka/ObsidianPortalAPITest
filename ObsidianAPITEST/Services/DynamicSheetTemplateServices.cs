@@ -11,7 +11,7 @@ namespace ObsidianAPITEST.Services
 {
     class DynamicSheetTemplateServices
     {
-        public string _DSTBaseApiUrl = " http://api.obsidianportal.com/v1/";
+        public string _DSTBaseApiUrl = "http://api.obsidianportal.com/v1/";
 
         public async Task<List<DynamicSheetTemplate>> GetDynamicSheetTemplates()
         {

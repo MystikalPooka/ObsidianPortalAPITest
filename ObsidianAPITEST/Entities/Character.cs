@@ -9,15 +9,14 @@ namespace ObsidianAPITEST.Entities
 {
     internal class Character
     {
-
         [JsonProperty("id")]
         public string Id { get; set; }
         [JsonProperty("slug")]
-        public string slug { get; set; }
+        public string Slug { get; set; }
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string Name { get; set; }
         [JsonProperty("avatar_url")]
-        public string avatarUrl { get; set; }
+        public string AvatarUrl { get; set; }
         [JsonProperty("campaign")]
         public MiniCampaign Campaign { get; set; }
         [JsonProperty("visibility")]
@@ -49,7 +48,6 @@ namespace ObsidianAPITEST.Entities
                     case ObsidianVisibility.Friends:
                         RawVisibility = "friends";
                         break;
-
                     case ObsidianVisibility.Private:
                         RawVisibility = "private";
                         break;
@@ -61,7 +59,6 @@ namespace ObsidianAPITEST.Entities
         public DateTime CreatedAt { get; set; }
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; }
-
 
         //Public / Private / Friends Visibility (availability depends on campaign's visibility)
         [JsonProperty("author")]
